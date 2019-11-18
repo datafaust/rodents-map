@@ -1,12 +1,15 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
+import classes from './statcard.module.css';
 
+const StatCard = (props) => {
 
-const StatCard = ( props ) => {
-    
     return (
-        <div style={{marginLeft:"50%"}}>
-            { `Total Inspections: ${props.totalInspections}`}
-        </div>
+        <Card className={classes.cards}>
+            <Card.Body>
+                <h1 className={classes.title}>198</h1>
+            </Card.Body>
+        </Card>
     )
 };
 

@@ -93,8 +93,9 @@ class App extends Component {
               <div></div>}
         </div>
           
-        {this.state.totalInspections && <StatCard totalInspections={this.state.totalInspections} /> } 
           
+
+          <StatCard />
           <Dates handleDateInput={this.handleDateInput}/>
           <Leaf data={this.state.data} />
           
