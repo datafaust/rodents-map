@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import classes from './dates.module.css'
 
 class Dates extends Component {
     render() {
         return (
-            <div>
-                   <input  type="date" onChange={this.props.handleDateInput} />
+            <div className={classes.date}>
+                   <label>{this.props.title}</label> 
+                   <input type="date" value={this.props.value} onChange={this.props.handleDateInput} />
             </div>
         );
     }

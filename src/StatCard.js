@@ -7,7 +7,7 @@ const StatCard = (props) => {
     return (
         <Card className={classes.cards}>
             <Card.Body>
-                <h1 className={classes.title}>198</h1>
+                <h1 className={classes.title}>{props.value}</h1>
             </Card.Body>
         </Card>
     )

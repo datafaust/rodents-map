@@ -13,8 +13,8 @@ class Leaf extends Component {
         position: "relative",
         top: "0",
         bottom: "0",
-        width: "70vw", //change to a 100 on both for full screen 
-        height: "70vh"
+        width: "100vw", //change to a 100 on both for full screen 
+        height: "100vh"
       }
 
       this.props.data.map(data=>{

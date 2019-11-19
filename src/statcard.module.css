@@ -2,9 +2,8 @@
 .cards {
     width: 30%;
     margin: 20px auto;
-      
-      
-    background: white;
+    color: white;
+    background: #343a40!important;
     box-shadow: 20px 8px 20px grey;
         -webkit-transition:  box-shadow .2s ease-in;
         opacity: .8;
