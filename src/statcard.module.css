@@ -48,3 +48,16 @@
     margin: 110px 45% 50px 45%
   }
   
+
+  @media screen and (max-width: 600px) {
+    
+    .title {
+      font-size: .7em;
+    } 
+
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0px;
+
+  }

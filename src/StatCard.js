@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Accordion, Button, Container } from 'react-bootstrap';
 import classes from './statcard.module.css';
 
 const StatCard = (props) => {
@@ -7,10 +7,19 @@ const StatCard = (props) => {
     return (
         <Card className={classes.cards}>
             <Card.Body>
-                <h1 className={classes.title}>{props.value}</h1>
+                <p className={classes.title}>{props.value}</p>
             </Card.Body>
         </Card>
     )
 };
 
 export default StatCard;
+
+/**
+ * old code
+ *  <Card className={classes.cards}>
+            <Card.Body>
+                <p className={classes.title}>{props.value}</p>
+            </Card.Body>
+        </Card>
+ */

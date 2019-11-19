@@ -1,7 +1,7 @@
 
 .wrapper {
     background-color: aliceblue;
-    width: 30%;
+    width: 40%;
     box-shadow: 20px 8px 20px grey;
     -webkit-transition:  box-shadow .2s ease-in;
     display:block;
@@ -14,3 +14,4 @@
  }
 
  
+

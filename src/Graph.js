@@ -10,7 +10,7 @@ import classes from './graph.module.css';
 
       return ( 
         <div className={classes.wrapper}>    
-        <ResponsiveContainer width = "100%" height={250} >
+        <ResponsiveContainer width = "100%" height={200} >
             {props.graph}
         </ResponsiveContainer>
         </div>
