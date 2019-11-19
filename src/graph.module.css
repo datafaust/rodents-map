@@ -1,4 +1,16 @@
 
+
+.wrapper {
+    background-color: white;
+    width: 30%;
+    box-shadow: 20px 8px 20px grey;
+    -webkit-transition:  box-shadow .2s ease-in;
+    display:block;
+    margin: 20px auto;
+  }
+
+
+/*
 .wrapper {
     background-color: aliceblue;
     width: 30%;
@@ -13,4 +25,4 @@
    -webkit-transition:  box-shadow .2s ease-in;
  }
 
- 
+ */

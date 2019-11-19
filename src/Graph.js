@@ -9,11 +9,11 @@ import classes from './graph.module.css';
   const Graph = ( props ) => {
 
       return ( 
-        <div className={classes.wrapper}>    
+        //<div className={classes.wrapper}>    
         <ResponsiveContainer width = "100%" height={250} >
             {props.graph}
         </ResponsiveContainer>
-        </div>
+       //</div>
       )
   };
   
