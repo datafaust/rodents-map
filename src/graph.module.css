@@ -1,28 +1,15 @@
-
-
 .wrapper {
-    background-color: white;
-    width: 30%;
+    background-color: #343a40!important;
+    width: 40%;
+    height: 30%;
     box-shadow: 20px 8px 20px grey;
     -webkit-transition:  box-shadow .2s ease-in;
     display:block;
     margin: 20px auto;
-  }
-
-
-/*
-.wrapper {
-    background-color: aliceblue;
-    width: 30%;
-    box-shadow: 20px 8px 20px grey;
-    -webkit-transition:  box-shadow .2s ease-in;
-    display:block;
-    margin: 20px auto;
+    border-radius: 25px;
 }
 
 .wrapper:hover{ 
     box-shadow: 30px 8px 30px grey;
    -webkit-transition:  box-shadow .2s ease-in;
  }
-
- */

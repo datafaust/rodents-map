@@ -1,8 +1,9 @@
 .splash_screen {
   font-size: 25px;
   position: relative;
-  height: 1000px;
-  
+  height: 100%;
+  margin-left: 40%;
+  margin-top: 10%;
 }
 
 .loader {
@@ -25,4 +26,38 @@
   position: absolute;
   z-index: 999;
   /*margin-top: 20%;*/
+}
+
+.dateContainer {
+  width:20%;
+  position: absolute;
+  z-index: 999;
+  margin-left:1%;
+  margin-top: 9%;
+}
+
+.graphContainer {
+  width: 95%;
+  position: absolute;
+  z-index: 999;
+  margin-top: 37%;
+  margin-left: 4%;
+}
+
+@media screen and (max-width: 600px) {
+    
+  .graphContainer {
+    width: 95%;
+    position: absolute;
+    z-index: 999;
+    margin-top: 97%;
+    margin-left: 2%;
+  }
+
+  .container {
+    width: 95%;
+    position: absolute;
+    z-index: 999;
+    margin-left: 2%;
+  }
 }

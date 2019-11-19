@@ -20,11 +20,14 @@ class App extends Component {
       cleanData: [],
       graphData: [],
       pieGraphData:[],
+      totalCount:{},
+      topCount:[],
       dateInputStart: '2019-11-01',
       dateInputEnd: '2019-11-18',
       loading: false,
       totalInspections: null,
-      calculate: false
+      calculate: false,
+      open: true
     };
   }
 
@@ -78,11 +81,32 @@ class App extends Component {
         )
     }
 
+    const requestTotalCount = () => {
+      fetch(`https://data.cityofnewyork.us/resource/p937-wjvj.json?$select=count(*) as value&$where=latitude > 39 AND latitude< 45 AND inspection_date >= '${this.state.dateInputStart}'  AND inspection_date <= '${this.state.dateInputEnd}'`)
+        .then(res => res.json())
+        .then(res =>
+          //console.log(res)
+          this.setState({ totalCount: res })
+        )
+    }
+
+    const requestTop = () => {
+      fetch(`https://data.cityofnewyork.us/resource/p937-wjvj.json?$select=inspection_type,count(*) as value&$where=latitude > 39 AND latitude< 45 AND inspection_date >= '${this.state.dateInputStart}'  AND inspection_date <= '${this.state.dateInputEnd}'&$group=inspection_type&$order=inspection_type`)
+        .then(res => res.json())
+        .then(res =>
+          //console.log(res)
+          this.setState({ topCount: res })
+        )
+    }
+
+
     //this.setState({calculate: true})
     //call the function
     await requestData();
     await requestDayCounts();
     await requestBoroughCounts();
+    await requestTotalCount();
+    await requestTop();
     this.calculateInspections();
 
 
@@ -119,6 +143,13 @@ class App extends Component {
     );
   }
 
+  averageScores =({avg, n}, slangTermInfo) => {
+    return {
+        avg: (parseInt(slangTermInfo.count) + n * avg) / (n + 1),
+        n:   n + 1,
+    };
+  }
+
 
   //inspection_date >= '${this.state.dateInput}'& 
   // https://data.cityofnewyork.us/resource/p937-wjvj.json?$where=inspection_date >= '2019-10-10T12:00:00' 
@@ -127,41 +158,48 @@ class App extends Component {
 
     //parse datat for borough graph 
     let data03 = this.state.pieGraphData.map(item => {item["value"] = parseInt(item["value"]); return item})
-    console.log(data03)
+
+    //produce average per day
+    
+      const initialVals = {avg: 0, n: 0};
+      const averagePday = Math.round(this.state.graphData.reduce(this.averageScores, initialVals).avg);
+      console.log(averagePday);
+    
+
+
+    let z = [{value:"6448"}]
+    console.log(this.state.topCount)
 
     return (
-      <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
-
-        <div>{!this.state.loading ?
-          this.LoadingMessage() :
-          <div></div>}
-        </div>
-
-        <Navigator />
+      <div>
+        {!this.state.loading ?
+        this.LoadingMessage() :
+        <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+          <Navigator />
 
         <Row className={classes.container}>
-          <StatCard value={this.state.totalInspections} />
-          <StatCard value={this.state.totalInspections} />
-          <StatCard value={this.state.totalInspections} />
+          <StatCard value={`Total Inspections: ${this.state.totalCount[0] ? this.state.totalCount[0].value : 0}`} open={this.state.open} />
+          <StatCard value={`Average Inspections per Day: ${Math.round(this.state.graphData.reduce(this.averageScores, initialVals).avg)}`} open={this.state.open} />
+          <StatCard value={`Top Inspection Type: ${this.state.topCount[0]? this.state.topCount[0].inspection_type : 0}`} open={this.state.open} />
         </Row>
 
-        <Row className={classes.container} style={{marginTop: "10%"}}>
-          <Dates title={'Start Date'} value={this.state.dateInputStart} handleDateInput={this.handleDateInputStart} />
-          <Dates title={'End Date'} value={this.state.dateInputEnd} handleDateInput={this.handleDateInputEnd} />
-        </Row>
+        <div className={classes.dateContainer}>
+          <Dates title={'Start Date: '} value={this.state.dateInputStart} handleDateInput={this.handleDateInputStart} />
+          <Dates title={'End Date: '} value={this.state.dateInputEnd} handleDateInput={this.handleDateInputEnd} />
+        </div>
 
-        <Row className={classes.container} style={{marginTop: "30%"}}>
+        <Row className={classes.graphContainer}>
         <Graph
           graph=
           {<LineChart
             data={this.state.graphData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="4 4" />
-            <XAxis dataKey="day" angle={0} textAnchor="end" tick={{ fontSize: 13 }} />
+            <XAxis dataKey="day" angle={0} textAnchor="end"  tick={{ fontSize: 13, fill:"white" }} />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="count" stroke="#000000" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="count" stroke="white" activeDot={{ r: 8 }} />
           </LineChart>}
         />
         
@@ -180,20 +218,12 @@ class App extends Component {
         </PieChart>}
         />
         </Row>
+     
         <Leaf data={this.state.data} />
-
-
-
-
-    
-
-        
-
-
-
-
-
       </Container>
+        }
+      </div>
+      
     );
   }
 }
@@ -202,6 +232,8 @@ export default App;
 
 
 /**olf code
+ * 
+ *    <Leaf data={this.state.data} />
  * 
  *   updateData =() => {
     //populate clean data
