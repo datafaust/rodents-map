@@ -13,13 +13,15 @@ class Navigator extends Component {
             
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="/">
+            <div className={classes.wrapper}>
             <img className={classes.logo}
                   src={logo}
                   width="90"
-                  height="70"
+                  height="60"
                   alt="React Bootstrap logo"
                 />
-
+            <h3 className={classes.title}>RatInspector</h3>
+            </div>
             </Navbar.Brand>
               
             </Navbar>

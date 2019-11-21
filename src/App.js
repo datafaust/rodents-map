@@ -5,6 +5,7 @@ import StatCard from './StatCard';
 import Graph from './Graph';
 import classes from './app.module.css';
 import Navigator from './Navigator';
+import Pop from './Pop';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie
 } from 'recharts';
@@ -27,7 +28,8 @@ class App extends Component {
       loading: false,
       totalInspections: null,
       calculate: false,
-      open: true
+      open: true,
+      showModal:true
     };
   }
 
@@ -150,6 +152,9 @@ class App extends Component {
     };
   }
 
+  closeModal = () => {
+    this.setState({showModal : false})
+  }
 
   //inspection_date >= '${this.state.dateInput}'& 
   // https://data.cityofnewyork.us/resource/p937-wjvj.json?$where=inspection_date >= '2019-10-10T12:00:00' 
@@ -176,7 +181,10 @@ class App extends Component {
         this.LoadingMessage() :
         <div >
           <Navigator />
-
+          <Pop 
+            showModal={this.state.showModal}
+            closeModal={this.closeModal}
+            />
         <div className={classes.container}>
           <StatCard value={`Total Inspections: ${this.state.totalCount[0] ? this.state.totalCount[0].value : 0}`} open={this.state.open} />
           <StatCard value={`Average Inspections per Day: ${Math.round(this.state.graphData.reduce(this.averageScores, initialVals).avg)}`} open={this.state.open} />
@@ -187,12 +195,12 @@ class App extends Component {
           <Dates title={'Start Date: '} value={this.state.dateInputStart} handleDateInput={this.handleDateInputStart} />
           <Dates title={'End Date: '} value={this.state.dateInputEnd} handleDateInput={this.handleDateInputEnd} />
         </div>
-     
+        <div style = {{backgroundColor: '#343a40', height: "750px"}}>
         <Leaf data={this.state.data} />
-
-
+        </div>
         <div className={classes.graphContainer}>
-        <Graph
+        <Graph 
+          title={'Total Poops per Day'}
           graph=
           {<LineChart
             data={this.state.graphData}
@@ -207,6 +215,7 @@ class App extends Component {
         />
         
         <Graph
+          title={'Total Poops per Day'}
           graph=
           {	<PieChart width={400} height={400}>
           <Pie 
