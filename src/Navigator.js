@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Navbar, Nav, NavItem, NavDropdown} from 'react-bootstrap'
 import classes from './nav.module.css';
+import logo from './assets/rat.png'
 
 class Navigator extends Component {
 
@@ -12,7 +13,13 @@ class Navigator extends Component {
             
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="/">
-            RODENTS
+            <img className={classes.logo}
+                  src={logo}
+                  width="90"
+                  height="70"
+                  alt="React Bootstrap logo"
+                />
+
             </Navbar.Brand>
               
             </Navbar>

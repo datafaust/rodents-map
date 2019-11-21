@@ -174,21 +174,24 @@ class App extends Component {
       <div>
         {!this.state.loading ?
         this.LoadingMessage() :
-        <Container fluid style={{ paddingLeft: 0, paddingRight: 0 }}>
+        <div >
           <Navigator />
 
-        <Row className={classes.container}>
+        <div className={classes.container}>
           <StatCard value={`Total Inspections: ${this.state.totalCount[0] ? this.state.totalCount[0].value : 0}`} open={this.state.open} />
           <StatCard value={`Average Inspections per Day: ${Math.round(this.state.graphData.reduce(this.averageScores, initialVals).avg)}`} open={this.state.open} />
           <StatCard value={`Top Inspection Type: ${this.state.topCount[0]? this.state.topCount[0].inspection_type : 0}`} open={this.state.open} />
-        </Row>
+        </div>
 
         <div className={classes.dateContainer}>
           <Dates title={'Start Date: '} value={this.state.dateInputStart} handleDateInput={this.handleDateInputStart} />
           <Dates title={'End Date: '} value={this.state.dateInputEnd} handleDateInput={this.handleDateInputEnd} />
         </div>
+     
+        <Leaf data={this.state.data} />
 
-        <Row className={classes.graphContainer}>
+
+        <div className={classes.graphContainer}>
         <Graph
           graph=
           {<LineChart
@@ -217,10 +220,8 @@ class App extends Component {
           <Tooltip />
         </PieChart>}
         />
-        </Row>
-     
-        <Leaf data={this.state.data} />
-      </Container>
+        </div>
+      </div>
         }
       </div>
       

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import HeatmapLayer from 'react-leaflet-heatmap-layer';
+import classes from './leaf.module.css'
 
 class Leaf extends Component {
     render() {
@@ -26,7 +27,8 @@ class Leaf extends Component {
         return (
             <Map center={[40.7484, -73.9857]}
             zoom={8}
-            style= {mapStyles}
+            className={classes.map}
+            //style= {mapStyles}
           >
           {
           cleanData.length > 0 ?
