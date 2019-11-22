@@ -41,7 +41,7 @@ class App extends Component {
       this.setState({
         showModal: true
       });
-    }, 2500)
+    }, 2000)
 
 
     try {
