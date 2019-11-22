@@ -44,8 +44,8 @@ class Leaf extends Component {
            : <div></div>
           }
                 <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url= 'http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png'
             />
     
     

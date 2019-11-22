@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import rat from './assets/rat2.jpeg'
+import scared from './assets/scared3.png'
 import classes from './pop.module.css'
 
 class Pop extends Component {
@@ -16,9 +17,11 @@ class Pop extends Component {
                 <Modal.Body>
                     <p>The rodent inspector dashboard was built to help
                         you access open data's rodent inspection data. Use the 
-                        date filters to select a time period. 
+                        date filters to select a time period and see more information.
+                        More features coming soon...
                     </p>
-                    <img src = {rat}/>
+                    <img className = {classes.rat} src = {rat}/>
+                    <img className={classes.scared} src = {scared}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
