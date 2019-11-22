@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import rat from './assets/rat2.jpeg'
+import classes from './pop.module.css'
 
 class Pop extends Component {
     render() {
         return (
             <Modal
+                dialogClassName={classes.modal}
                 show={this.props.showModal}
                 onHide={this.props.closeModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>My Favorites List</Modal.Title>
+                    <Modal.Title>Welcome to Rodent Inspector!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>some text</p>
+                    <p>The rodent inspector dashboard was built to help
+                        you access open data's rodent inspection data. Use the 
+                        date filters to select a time period. 
+                    </p>
+                    <img src = {rat}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button

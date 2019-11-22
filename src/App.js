@@ -29,11 +29,21 @@ class App extends Component {
       totalInspections: null,
       calculate: false,
       open: true,
-      showModal:true
+      showModal:false
     };
   }
 
   componentDidMount() {
+
+
+    //set modal run after two seconds
+    setTimeout(() => {
+      this.setState({
+        showModal: true
+      });
+    }, 2500)
+
+
     try {
       this.fetchData();
       if (this.state.data.length != 0) {
@@ -45,6 +55,8 @@ class App extends Component {
         loading: false
       })
     }
+
+
 
   }
 
@@ -156,6 +168,10 @@ class App extends Component {
     this.setState({showModal : false})
   }
 
+  openModal = () => {
+    this.setState({showModal : true })
+  }
+
   //inspection_date >= '${this.state.dateInput}'& 
   // https://data.cityofnewyork.us/resource/p937-wjvj.json?$where=inspection_date >= '2019-10-10T12:00:00' 
 
@@ -200,7 +216,7 @@ class App extends Component {
         </div>
         <div className={classes.graphContainer}>
         <Graph 
-          title={'Total Poops per Day'}
+          title={'Inspections per Day'}
           graph=
           {<LineChart
             data={this.state.graphData}
@@ -215,15 +231,15 @@ class App extends Component {
         />
         
         <Graph
-          title={'Total Poops per Day'}
+          title={'Inspections by Borough'}
           graph=
           {	<PieChart width={400} height={400}>
           <Pie 
             dataKey="value" 
             isAnimationActive={false} 
             data={this.state.pieGraphData} 
-            cx={200} 
-            cy={200} 
+            //cx={200} 
+            //cy={200} 
             outerRadius={80} 
             fill="#8884d8" label />
           <Tooltip />
