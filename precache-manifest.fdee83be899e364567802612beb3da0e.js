@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "11380da3e42a8985b57871f114762e9e",
+    "revision": "a676ce39de31162c97ed6857fd165ed4",
     "url": "/rodents-map/index.html"
   },
   {
-    "revision": "4d8a681743ebcb8deb6d",
+    "revision": "daa93adc8761c8c8a980",
     "url": "/rodents-map/static/css/main.74486bd3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/rodents-map/static/js/2.ef715d81.chunk.js"
   },
   {
-    "revision": "4d8a681743ebcb8deb6d",
-    "url": "/rodents-map/static/js/main.81d818fa.chunk.js"
+    "revision": "daa93adc8761c8c8a980",
+    "url": "/rodents-map/static/js/main.41835e1a.chunk.js"
   },
   {
     "revision": "4338cde2d5583fb48e7c",
