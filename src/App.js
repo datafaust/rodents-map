@@ -179,6 +179,7 @@ class App extends Component {
 
     //parse datat for borough graph 
     let data03 = this.state.pieGraphData.map(item => {item["value"] = parseInt(item["value"]); return item})
+    let cleanGraphData = this.state.graphData.map(item => {item["day"] = item["day"].substring(0,10); return item})
 
     //produce average per day
     
@@ -219,13 +220,14 @@ class App extends Component {
           title={'Inspections per Day'}
           graph=
           {<LineChart
-            data={this.state.graphData}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            data={cleanGraphData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            >
             <CartesianGrid strokeDasharray="4 4" />
             <XAxis dataKey="day" angle={0} textAnchor="end"  tick={{ fontSize: 13, fill:"white" }} />
-            <YAxis />
+            <YAxis tick={{ fontSize: 13, fill:"white" }} type="number" domain={[0, 1500]} />
             <Tooltip />
-            <Legend />
+           
             <Line type="monotone" dataKey="count" stroke="white" activeDot={{ r: 8 }} />
           </LineChart>}
         />
@@ -246,6 +248,21 @@ class App extends Component {
         </PieChart>}
         />
         </div>
+        <div style={{ backgroundColor: "#363a42"}}>
+          <p
+            style={{
+              width: "90%",
+            
+              margin: "auto 5%",
+              padding: "30px",
+              color: "white",
+              textAlign: "center"
+            }}
+          >
+            By Fausto Lopez
+          </p>
+        </div>
+
       </div>
         }
       </div>

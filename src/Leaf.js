@@ -25,7 +25,7 @@ class Leaf extends Component {
       //console.log(this.props.data)
 
         return (
-            <Map center={[40.7484, -73.9857]}
+            <Map center={[40.7510, -73.9688]}
             zoom={8}
             className={classes.map}
             //style= {mapStyles}

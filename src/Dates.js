@@ -6,7 +6,7 @@ class Dates extends Component {
         return (
             <div className={classes.date}>
                    <label>{this.props.title}</label> 
-                   <input type="date" value={this.props.value} onChange={this.props.handleDateInput} />
+                   <input className={classes.enter} type="date" value={this.props.value} onChange={this.props.handleDateInput} />
             </div>
         );
     }
